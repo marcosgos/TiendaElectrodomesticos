@@ -3,7 +3,7 @@ package vista;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import controlador.BaseDeDatos;
+import controlador.BaseDeDatoss;
 import modelo.Electrodomestico;
 
 public class Consola {
@@ -40,27 +40,26 @@ public class Consola {
         leer.nextLine();
         return valor;
     }
-    
-    /**
-     * Menú principal de la aplicación.
-     * @return El número asociado a la opción solicitada por el usuario.
-     */
+
     public int menuPrincipal() {
     	int opcion;
     	do {
 	    	System.out.println("\n\tMenu Electrodomestico\n");
-	    	System.out.println("Opción 1. Crear un Electrodomestico");
-	    	System.out.println("Opción 2. Modificar un Electrodomestico");
-	    	System.out.println("Opción 3. Borrar un Electrodomestico");
-	    	System.out.println("Opción 4. Ver todos los Electrodomesticos");
-	    	System.out.println("Opción 0. Salir");
+	    	System.out.println("Opción 1. Crear un Electrodomestico ");
+	    	System.out.println("Opción 2. Modificar un Electrodomestico ");
+	    	System.out.println("Opción 3. Borrar un Electrodomestico ");
+	    	System.out.println("Opción 4. Ver todos los Electrodomesticos ");
+	    	System.out.println("Opción 0. Salir ");
 	    	opcion = pideEntero("Voy a elegir la opción ");
 	    	if(opcion<0 || opcion>4) {
 	    		System.out.println("\n\tOpción fuera de rango");
 	    	}
     	}while(opcion != 0);
 		return opcion;
+    	
     }
+    
+    
     
     public Electrodomestico pideElectrodomestico(){
     	Electrodomestico e = new Electrodomestico();
@@ -71,6 +70,8 @@ public class Consola {
         e.setConsumo(pideEntero("Introduce el consumo del electrodomestico: "));
         e.setVendido(pideBooleano("¿Está vendido el electrodoméstico?: "));
         
+        
         return e;
+
     }
 }

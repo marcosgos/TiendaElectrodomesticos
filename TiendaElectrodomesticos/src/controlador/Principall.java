@@ -2,11 +2,11 @@ package controlador;
 
 import vista.Consola;
 
-public class Principal {
+public class Principall {
 
 	public static void main(String[] args) {
 		Consola c = new Consola();
-    	BaseDeDatos ba = new BaseDeDatos();
+    	BaseDeDatoss ba = new BaseDeDatoss();
 
 		int opcion = c.menuPrincipal();
 		

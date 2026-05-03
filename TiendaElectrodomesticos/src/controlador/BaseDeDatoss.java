@@ -9,7 +9,7 @@ import java.sql.Statement;
 import modelo.Electrodomestico;
 import vista.Consola;
 
-public class BaseDeDatos {
+public class BaseDeDatoss {
 	
 	/**
 	 * Método para la creación de la conexión a la base de datos.
