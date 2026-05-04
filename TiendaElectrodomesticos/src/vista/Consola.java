@@ -54,9 +54,9 @@ public class Consola {
 	    	if(opcion<0 || opcion>4) {
 	    		System.out.println("\n\tOpción fuera de rango");
 	    	}
-    	}while(opcion != 0);
+    	}while(opcion<0 || opcion>4);
+
 		return opcion;
-    	
     }
     
     

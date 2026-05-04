@@ -64,7 +64,7 @@ public class BaseDeDatoss {
 			conexion = getConexion();
 			Statement consulta = conexion.createStatement();
 			ResultSet listado = consulta.executeQuery("select id_electrodomestico, tipo "
-														+ "from electorodomestico");
+														+ "from electrodomestico");
 			while(listado.next()) {
 				System.out.println("Identificacion: " + listado.getString("id_electrodomestico"));
 				System.out.println("Tipo: " + listado.getString("tipo"));
