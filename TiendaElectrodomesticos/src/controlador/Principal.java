@@ -2,11 +2,11 @@ package controlador;
 
 import vista.Consola;
 
-public class Principall {
+public class Principal {
 
 	public static void main(String[] args) {
 		Consola c = new Consola();
-    	BaseDeDatoss ba = new BaseDeDatoss();
+    	BaseDeDatos ba = new BaseDeDatos();
     	
     	
     	

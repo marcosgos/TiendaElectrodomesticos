@@ -3,7 +3,7 @@ package vista;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import controlador.BaseDeDatoss;
+import controlador.BaseDeDatos;
 import modelo.Electrodomestico;
 
 public class Consola {
@@ -40,7 +40,11 @@ public class Consola {
         leer.nextLine();
         return valor;
     }
-
+    
+    /**
+     * Menú principal de la aplicación, se repetirá hasta que el usuario seleccione una opción registrada.
+     * @return el número asociado a la opción deseada por el usuario.
+     */
     public int menuPrincipal() {
     	int opcion;
     	do {
