@@ -28,6 +28,72 @@ public class BaseDeDatoss {
 	}
 	
 	/**
+	 * Metodo por el que insertamos un electrodomestico en la base de datos
+	 * @return del objeto electrodomestico insertado para guardar en un arrayList
+	 */
+	public Electrodomestico insertarElectrodomestico() {
+		Consola c = new Consola();
+		Electrodomestico e = new Electrodomestico();
+		e = c.pideElectrodomestico();
+		Connection conexion;
+				
+		try {
+			conexion = getConexion();
+			Statement consulta = conexion.createStatement();
+			
+			consulta.executeUpdate("insert into electrodomestico (tipo,marca,precio,consumo,vendido) values('"
+					+e.getTipo()+"','"+e.getMarca()+"',"+e.getPrecio()+","+e.getConsumo()+","+e.isVendido()+")");
+			conexion.close();
+			System.out.println("Producto guardado correctamente");
+		} catch (SQLException ex) {
+			System.out.println("No se pudo insertar el electrodomestico");
+			
+		}
+		return e;
+		
+	}
+	
+	/**
+	 * Metodo por el que se consulta un electrodomestico de la base de datos
+	 */
+	public void consultaElectrodomesticos() {
+		Consola c = new Consola();
+		Connection conexion;	
+		
+		try {
+			conexion = getConexion();
+			Statement consulta = conexion.createStatement();
+			ResultSet listado = consulta.executeQuery("select id_electrodomestico, tipo "
+														+ "from electorodomestico");
+			while(listado.next()) {
+				System.out.println("Identificacion: " + listado.getString("id_electrodomestico"));
+				System.out.println("Tipo: " + listado.getString("tipo"));
+			}
+			
+			int id_electrodomestico = c.pideEntero("Elija un identificador de electrodomestico: ");
+			ResultSet registro = consulta.executeQuery("select * "
+														+ "from electrodomestico "
+														+ "where id_electrodomestico ="
+														+ id_electrodomestico);
+			if(registro.next()) {
+				System.out.println("Id_producto: " + registro.getString("id_electrodomestico"));
+				System.out.println("Tipo: " + registro.getString("tipo"));
+				System.out.println("Marca: " + registro.getString("marca"));
+				System.out.println("Precio: " + registro.getString("precio"));
+				System.out.println("Consumo: " + registro.getString("consumo"));
+			} else {
+				System.out.println("El electrodomestico con el ID "+ id_electrodomestico + " no existe");
+			}
+			
+			conexion.close();					
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+	}
+
+	
+	/**
 	 * Método en el que se modifica un producto de la base de datos.
 	 */
 	public void modificarElectrodomestico() {

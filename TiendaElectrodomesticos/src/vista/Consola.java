@@ -48,7 +48,7 @@ public class Consola {
 	    	System.out.println("Opción 1. Crear un Electrodomestico ");
 	    	System.out.println("Opción 2. Modificar un Electrodomestico ");
 	    	System.out.println("Opción 3. Borrar un Electrodomestico ");
-	    	System.out.println("Opción 4. Ver todos los Electrodomesticos ");
+	    	System.out.println("Opción 4. Consultar un Electrodomestico ");
 	    	System.out.println("Opción 0. Salir ");
 	    	opcion = pideEntero("Voy a elegir la opción ");
 	    	if(opcion<0 || opcion>4) {

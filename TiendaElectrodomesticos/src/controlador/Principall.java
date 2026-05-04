@@ -12,7 +12,7 @@ public class Principall {
 		
 		switch (opcion) {
 		case 1: {
-			//ba.insertarElectrodomestico();
+			ba.insertarElectrodomestico();
 			break;
 		}
 		case 2:{
@@ -24,7 +24,7 @@ public class Principall {
 			break;
 		}
 		case 4:{
-			//ba.;
+			ba.consultaElectrodomesticos();
 			break;
 		}
 		case 0:{
