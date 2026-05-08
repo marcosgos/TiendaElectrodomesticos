@@ -17,12 +17,12 @@ public class BaseDeDatos {
 	 * @throws SQLException
 	 */
 	public Connection getConexion() throws SQLException {
-		//String url = "jdbc:mysql://localhost/bd_electrodomesticos";
-	    String url = "jdbc:mysql://192.168.1.3:3306/bd_electrodomesticos?useSSL=false";
-	    //String usuario = "root";
-	    String usuario = "marcos";
-		//String constraseña = "";
-	    String constraseña = "123456";
+		String url = "jdbc:mysql://localhost/bd_electrodomesticos";
+	    //String url = "jdbc:mysql://192.168.1.3:3306/bd_electrodomesticos?useSSL=false";
+	    String usuario = "root";
+	    //String usuario = "marcos";
+		String constraseña = "";
+	    //String constraseña = "123456";
 
 	    return DriverManager.getConnection(url, usuario, constraseña);
 	}
