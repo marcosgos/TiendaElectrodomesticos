@@ -6,6 +6,7 @@ public class Principal {
 
 	public static void main(String[] args) {
 		Consola c = new Consola();
+		MediaPrecioElectrodomestico media = new MediaPrecioElectrodomestico();
     	BaseDeDatos ba = new BaseDeDatos();
     	
     	
@@ -28,6 +29,10 @@ public class Principal {
 			}
 			case 4:{
 				ba.consultaElectrodomesticos();
+				break;
+			}
+			case 5:{
+				media.mostrarMediaPrecios();
 				break;
 			}
 			case 0:{
