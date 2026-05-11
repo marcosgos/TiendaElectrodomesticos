@@ -1,5 +1,6 @@
 package vista;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -49,17 +50,18 @@ public class Consola {
     	int opcion;
     	do {
 	    	System.out.println("\n\tMenu Electrodomestico\n");
-	    	System.out.println("Opción 1. Crear un Electrodomestico ");
-	    	System.out.println("Opción 2. Modificar un Electrodomestico ");
-	    	System.out.println("Opción 3. Borrar un Electrodomestico ");
-	    	System.out.println("Opción 4. Consultar un Electrodomestico ");
-	    	System.out.println("Opción 5. Consultar la media de los precios ");
+	    	System.out.println("Opción 1. Crear un electrodoméstico");
+	    	System.out.println("Opción 2. Modificar un electrodoéstico");
+	    	System.out.println("Opción 3. Borrar un electrodoméstico");
+	    	System.out.println("Opción 4. Consultar un electrodoméstico");
+	    	System.out.println("Opción 5. Consultar la media de los precios");
+	    	System.out.println("Opción 6. Consultar los electrodomésticos con menos de 15% de consumo");
 	    	System.out.println("Opción 0. Salir ");
 	    	opcion = pideEntero("Voy a elegir la opción: ");
-	    	if(opcion<0 || opcion>5) {
+	    	if(opcion<0 || opcion>6) {
 	    		System.out.println("\n\tOpción fuera de rango");
 	    	}
-    	}while(opcion<0 || opcion>5);
+    	}while(opcion<0 || opcion>6);
 
 		return opcion;
     }
@@ -78,5 +80,24 @@ public class Consola {
         
         return e;
 
+    }
+    
+    public void consultarMenor15() {
+
+        BaseDeDatos bd = new BaseDeDatos();
+
+        ArrayList<Electrodomestico> lista = bd.consultarMenor15();
+
+        if(lista != null) {
+            for(Electrodomestico e : lista) {
+                System.out.println();
+                System.out.println("Identificador: " + e.getId());
+                System.out.println("Tipo: " + e.getTipo());
+                System.out.println("Marca: " + e.getMarca());
+                System.out.println("Consumo: " + e.getConsumo());
+            }
+        } else {
+            System.out.println("\n\tNo hay ningún electrodoméstico con esas características\n");
+        }
     }
 }

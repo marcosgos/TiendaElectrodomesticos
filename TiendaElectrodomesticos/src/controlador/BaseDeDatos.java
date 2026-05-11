@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import modelo.Electrodomestico;
 import vista.Consola;
@@ -178,5 +179,36 @@ public class BaseDeDatos {
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
+	}
+	
+	public ArrayList<Electrodomestico> consultarMenor15() {
+		ArrayList<Electrodomestico> filtro = new ArrayList<>();
+		Connection conexion;
+		
+		try {
+			conexion = getConexion();
+			Statement consulta = conexion.createStatement();
+			ResultSet electrodomesticosMenoresA15;
+			
+			electrodomesticosMenoresA15 = consulta.executeQuery("select id_electrodomestico, tipo, marca, consumo from electrodomestico where consumo <= 15");
+			
+			if(!electrodomesticosMenoresA15.next()) {
+				return null;
+			}else {
+				do {
+					Electrodomestico electrodomesticoNuevo = new Electrodomestico();
+					electrodomesticoNuevo.setId(electrodomesticosMenoresA15.getInt("id_electrodomestico"));
+					electrodomesticoNuevo.setTipo(electrodomesticosMenoresA15.getString("tipo"));
+					electrodomesticoNuevo.setMarca(electrodomesticosMenoresA15.getString("marca"));
+					electrodomesticoNuevo.setConsumo(electrodomesticosMenoresA15.getFloat("consumo"));
+					filtro.add(electrodomesticoNuevo);
+				}while(electrodomesticosMenoresA15.next());
+				return filtro;
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+		
 	}	
 }

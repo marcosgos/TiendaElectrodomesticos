@@ -8,8 +8,7 @@ public class Principal {
 		Consola c = new Consola();
 		MediaPrecioElectrodomestico media = new MediaPrecioElectrodomestico();
     	BaseDeDatos ba = new BaseDeDatos();
-    	
-    	
+
     	
     	int opcion;
 		do {
@@ -33,6 +32,10 @@ public class Principal {
 			}
 			case 5:{
 				media.mostrarMediaPrecios();
+				break;
+			}
+			case 6:{
+				c.consultarMenor15();
 				break;
 			}
 			case 0:{
