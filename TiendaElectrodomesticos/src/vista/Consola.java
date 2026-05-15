@@ -8,13 +8,21 @@ import controlador.BaseDeDatos;
 import modelo.Electrodomestico;
 
 public class Consola {
-	
+	/**
+	 * Método para pedir al usuario un texto
+	 * @param mensaje (le pasamos la pregunta)
+	 * @return del texto que ha introducido el usuario
+	 */
 	public String pideCadena(String mensaje) {
 		Scanner leer = new Scanner(System.in);
         System.out.print(mensaje);
         return leer.nextLine();
     }
-	
+	/**
+	 * Método para pedir al usuario un numero entero
+	 * @param mensaje (le pasamos la pregunta)
+	 * @return del número introducido por el usuario
+	 */
     public int pideEntero(String mensaje) {
     	Scanner leer = new Scanner(System.in);
         int numero = 0;
@@ -33,7 +41,11 @@ public class Consola {
         }while(letra);
         return numero;
     }
-    
+    /**
+     * Método para pedir verdadero o falso al usuario
+     * @param mensaje (le pasamos la pregunta)
+     * @return del true o false introducido 
+     */
     public boolean pideBooleano(String mensaje) {
     	Scanner leer = new Scanner(System.in);
         System.out.print(mensaje + " (true/false): ");
@@ -67,7 +79,10 @@ public class Consola {
     }
     
     
-    
+    /**
+     * Método parqa pedir objeto electrodoméstico al usuario con todas sus especificaciones
+     * @return del objeto relleno de información por el usuario
+     */
     public Electrodomestico pideElectrodomestico(){
     	Electrodomestico e = new Electrodomestico();
         
@@ -81,7 +96,9 @@ public class Consola {
         return e;
 
     }
-    
+    /**
+     * Método para consultar electrodoméstico que consuma menos del 15%
+     */
     public void consultarMenor15() {
 
         BaseDeDatos bd = new BaseDeDatos();

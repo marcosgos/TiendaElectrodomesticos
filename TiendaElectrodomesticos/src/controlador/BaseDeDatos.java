@@ -29,7 +29,7 @@ public class BaseDeDatos {
 	}
 	
 	/**
-	 * Metodo por el que insertamos un electrodomestico en la base de datos
+	 * Método por el que insertamos un electrodomestico en la base de datos
 	 * @return del objeto electrodomestico insertado para guardar en un arrayList
 	 */
 	public Electrodomestico insertarElectrodomestico() {
@@ -55,7 +55,7 @@ public class BaseDeDatos {
 	}
 	
 	/**
-	 * Metodo por el que se consulta un electrodomestico de la base de datos
+	 * Método por el que se consulta un electrodomestico de la base de datos
 	 */
 	public void consultaElectrodomesticos() {
 		Consola c = new Consola();
@@ -180,7 +180,10 @@ public class BaseDeDatos {
 			ex.printStackTrace();
 		}
 	}
-	
+	/**
+	 * Método para consultar a la base de datos los electrodomésticos que consuman menos del 15%
+	 * @return
+	 */
 	public ArrayList<Electrodomestico> consultarMenor15() {
 		ArrayList<Electrodomestico> filtro = new ArrayList<>();
 		Connection conexion;
@@ -211,4 +214,28 @@ public class BaseDeDatos {
 		return null;
 		
 	}	
+	/**
+	 * Metodo para consultar a la base de datos la media del precio de los electrodomésticos
+	 */
+	 public void mostrarMediaPrecios() { 
+	    	BaseDeDatos basededatos = new BaseDeDatos();
+	    	Connection conexion;
+	        try {
+	            conexion = basededatos.getConexion();
+	            String sql = "SELECT AVG(precio) AS Media_Precios FROM electrodomestico";
+	            Statement frase = conexion.createStatement();
+	            ResultSet res = frase.executeQuery(sql);
+
+	            if (res.next()) {
+	                double media = res.getDouble("Media_Precios");
+	                System.out.println("La media de precios es: " + media);
+	            }
+
+	            res.close();
+	            frase.close();
+	            conexion.close();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	    }
 }
